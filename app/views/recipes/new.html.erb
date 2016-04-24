@@ -1,6 +1,10 @@
-<h1>Create a new Recipe!</h1>
-<%= simple_form_for @recipe, link_to: recipes_path, method: 'post' do |f| %>
-<%= f.input :name, required: true %>
-<%= f.input :description, required: true %>
-<%= f.button :submit %>
+
+<h1> Write a Recipe! </h1>
+<%= simple_form_for @recipe do |f| %>
+  Name: <%= f.text_field :name %>
+  Description: <%= f.text_field :description %>
+  
+  Time to complete: <%= f.text_field :time %>
+  Recipe Steps: <%= f.text_field :steps %>
+  <%= f.button :submit %>
 <% end %>
