@@ -1,38 +1,15 @@
-<h3>Hello there! </h3>
-<p>Email: <%= current_user.email if current_user.email %></p>
-<p>My Recipes:  
-  <% Recipe.all.each do |recipe| %>
-  <% if recipe.user_id == current_user.id %>
-  <br><br><%= recipe.name %> 
-  <br>Description: <%= recipe.description %>
-  <br>Calories: <%= recipe.calories %>
-  <br>Number of Likes: <%= recipe.number_of_likes %>
-  <br>Price: <%= recipe.price %>
-  <br>Vegan/Vegetarian: <%= recipe.vegan_vegetarian %>
-  <br>Contains Allergens: <%= recipe.contains_allergens %>
-  <br>Level of Difficulty: <%= recipe.level_of_difficulty %> 
+<h1> Find a Recipe! </h1>
 
-  <br><br>Ingredients:
-  <% Ingredient.all.each do |ingredient| %> 
-  <% if ingredient.recipe_id == recipe.id %> 
-  <br><%= ingredient.quantity %>
-  <%= ingredient.name %> 
-  <% end %> 
-  <% end %> 
-
-  <br><br>Instructions:
-  <% RecipeStep.all.each do |recipestep| %>
-  <% if recipestep.recipe_id == recipe.id %>
-  <br><%= recipestep.step_number %>.
-  <%= recipestep.step_description %>
-  <% end %> 
-  <% end %>
-  <br><br>
-  <%= button_to "Like this Recipe!", like_path(id: recipe), :class => "button medium", :method => :patch %>
-
-  <% end %> 
-  <% end %> 
-</br>
-<br>
-<br>
-<%= button_to "Create a New Recipe!", recipes_new_path, :class => "button medium", :method => :get %>
+Feel free to fill in any of the blanks that cater to a recipe that you want to find.
+<% @recipe = Recipe.new %>
+<%= simple_form_for @recipe do |f| %>
+  <br>Name: <%= f.text_field :name %>
+  <br>Must the Recipe be Vegan/Vegetarian? <%= f.text_field :vegan_vegetarian %>
+  <br>Budget? <%= f.text_field :price %>
+  <br>Level of Recipe Difficulty: <%= f.text_field :level_of_difficulty %>
+<% end %>
+<% @ingredient = Ingredient.new %>
+<%= simple_form_for @ingredient do |f| %>
+ <br>Ingredient: <%= f.text_field :name %>
+ <br><br><%= f.submit "Find Recipe" %>
+<% end %>

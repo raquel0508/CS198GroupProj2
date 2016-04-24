@@ -12,6 +12,23 @@ class RecipesController < ApplicationController
 		@recipe = Recipe.new
 	end
 
+	def search
+		lst = []
+		@recipe = Recipe.new(recipe_params)
+		@ingredient = Recipe.new(ing_params)
+		for recipe in Recipe.all
+			if recipe.name = :name || recipe.vegan_vegetarian = :vegan_vegetarian || recipe.price <= :price 
+				lst.append(recipe)
+			end
+		end
+		for ing in Ingredient.all
+			if ing.name = :ingredient
+				lst.append(recipe)
+			end
+		end
+		render 
+	end
+
 	def create
 		@recipe = Recipe.new(recipe_params)
 		@ingredients
@@ -30,8 +47,6 @@ class RecipesController < ApplicationController
 		#redirect_to #your recipes
 	end
 
-	def find
-	end
 
 	def like
 		@recipe = Recipe.find(params[:id])
