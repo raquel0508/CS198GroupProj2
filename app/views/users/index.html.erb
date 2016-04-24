@@ -1,4 +1,3 @@
-
 <head>
   <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 </head>
@@ -13,7 +12,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" width="1500px"><%= link_to "Recipe.io" %></a>
+      <a href="home#index">Recipe.io</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -66,6 +65,19 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<div id="outer">
+  <div id="inner">
+    <% if current_user %>
+      <!-- <h1 id="title">Welcome <%= current_user.username %>!</h1> -->
+      <% @recipes.each do |recipe| %>
+        <h2 id="recipe"><%= link_to recipe.name, recipe_path(id: recipe.id) %></h2>
+      <% end %>
+      <h3 id="button"><%= link_to "Create new recipe", new_recipe_path %></h3>
+      <h2 id="description"></h2>
+      </h2>
+    <% end %>
+  </div>
+</div>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -75,34 +87,3 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-<div class="outer">
-  <div class="inner">
-
-  <h1 id="recipename"><%= @recipe.name %>:</h1>  
-    <h2 id="recipedesc"><br>"<%= @recipe.description %>"</h2>
-    <h3 id="info"><br>Calories: <%= @recipe.calories %>
-    <br>Number of Likes: <%= @recipe.number_of_likes %>
-    <br>Price: <%= @recipe.price %>
-    <br>Vegan/Vegetarian: <%= @recipe.vegan_vegetarian %>
-    <br>Contains Allergens: <%= @recipe.contains_allergens %>
-    <br>Level of Difficulty: <%= @recipe.level_of_difficulty %> 
-
-    <h1 id="ingname"><br><br>Ingredients:</h1>
-    <% Ingredient.all.each do |ingredient| %> 
-    <% if ingredient.recipe_id == @recipe.id %> 
-      <h3 id="info"><br><%= ingredient.quantity %>
-      <%= ingredient.name %></h3>
-    <% end %> 
-    <% end %>
-    </h3>
-    
-  <br>
-
-    <h1 id="stepsname">Steps:</h1>
-    <h3 id="info"><%= @recipe.steps %></h3>
-  <br>
-  <%= button_to "Back", users_path(current_user.id), :class => "button medium", :method => :get %>
-  <%= button_to "Create a New Recipe!", recipes_new_path, :class => "button medium", :method => :get %>
-  </div>
-</div>

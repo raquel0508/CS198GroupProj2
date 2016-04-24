@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20160424060002) do
     t.string   "level_of_difficulty"
     t.string   "vegan_vegetarian"
     t.float    "price"
+    t.string   "steps"
+    t.string   "ingredients"
   end
 
   add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"

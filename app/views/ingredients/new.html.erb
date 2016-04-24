@@ -1,0 +1,7 @@
+<h1> Add ingredients! </h1>
+	<%= simple_form_for @ingredient do |f| %>
+		Name: <%= f.text_field :name %>
+		Quantity: <%= f.text_field :quantity %>
+		<%= f.input :recipe_id, as: :integer, :as => :hidden, input_html: {value: params[:id], id: 'recipe_id'} %>
+		<%= f.button :submit %>
+	<% end %>

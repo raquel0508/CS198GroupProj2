@@ -17,8 +17,12 @@ Rails.application.routes.draw do
   resources :recipesteps
 
   patch 'like', to:'recipes#like'
+  get '/recipes/search', to: 'recipes#search', as: :search
   get '/recipes/new', to: 'recipes#new'
   post 'recipes', to: 'recipes#create'
+
+  post 'recipes/create', to:"recipes#create"
+  
 
 
 end

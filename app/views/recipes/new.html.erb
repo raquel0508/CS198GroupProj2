@@ -1,9 +1,14 @@
+
 <h1> Write a Recipe! </h1>
 <%= simple_form_for @recipe do |f| %>
   Name: <%= f.text_field :name %>
   Description: <%= f.text_field :description %>
-  Ingredients: <%= f.text_field :ingredients %>
-  Time to complete: <%= f.text_field :time %>
-  Recipe Steps: <%= f.text_field :steps %>
+  Calories: <%= f.text_field :calories %>
+  Allergens: <%= f.text_field :contains_allergens %>
+  Difficulty: <%= f.text_field :level_of_difficulty %>
+  Price: <%= f.input :price, as: :integer %>
+  Vegan/Vegetarian: <%= f.text_field :vegan_vegetarian %>
+  Steps: <%= f.text_field :steps %>
+
   <%= f.button :submit %>
 <% end %>

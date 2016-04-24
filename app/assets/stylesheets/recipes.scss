@@ -1,3 +1,26 @@
-// Place all the styles related to the Recipes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#recipename {
+	color: black;
+	text-align: center;
+}
+
+#recipedesc {
+	color: black;
+	text-align: center;
+}
+
+#info {
+	color: blue;
+	margin-left: 25%;
+	letter-spacing: 3px;
+	word-spacing: 2px;
+}
+
+#ingname {
+	color: black;
+	text-align: center;
+}
+
+#stepsname {
+	color: black;
+	text-align: center;
+}
