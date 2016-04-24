@@ -1,0 +1,41 @@
+// Place all the styles related to the friends controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.friends {
+	padding: 10pt 20pt 10pt 20pt;
+}
+
+.friend_div {
+	padding: 10pt;
+	border: 1px solid #E0E0E0;
+	height: 100px;
+	width: 500px;
+	margin-bottom: 10px;
+}
+
+.friend_div img {
+	float: left;
+	height: 70px;
+	margin-right: 10px;
+}
+
+.add_friend {
+	margin-top: 50px;
+}
+
+.remove {
+	float: right;
+	font-size: 8pt;
+}
+
+.accept {
+	float: right;
+	font-size: 8pt;
+	margin-left: 7px;
+}
+
+.email {
+	width: 500px;
+	margin-bottom: 10px;
+}

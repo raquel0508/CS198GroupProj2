@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+body {
+	font-family: 'Open Sans', sans-serif !important;
+	font-weight: 100;
+}
+
+ .navbar {
+ 	background: rgba(255,255,255, .8);
+ }
+
+ .navbar a {
+ 	color: #000000;
+ }
+

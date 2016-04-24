@@ -1,0 +1,54 @@
+<% if flash[:error] %>
+	<div class="alert alert-danger" style="width: 500px; margin: 0 auto;">
+	  <%= flash[:error] %>
+	</div>
+<% end %>
+
+<div class="friends">
+	<div style='float:left; margin-right: 15px'>
+		<h2>Friends</h2>
+	</div>
+	<div style="margin-top: 30px;">
+		<h4><%= Friend.where(user_id: current_user.id, is_pending: false).count - Friend.where(friend_id: current_user.id, is_pending: true).count %></h4>
+	</div>
+	<% @friends.each do |friend| %>
+		<div class="friend_div" style='clear:both'>
+			<%= image_tag "profile_default.png" %>
+			<h5><%= User.find(friend.friend_id).name %></h5>
+			<p><%= Friend.where(user_id: friend.friend_id, is_pending: false).count - Friend.where(friend_id: friend.friend_id, is_pending: true).count %> Friends</p>
+			<% if Friend.where(user_id: friend.friend_id, friend_id: current_user.id).first.is_pending == true %>
+				<div class="remove" style="margin-left: 5px">
+					Pending
+				</div>
+				<%= link_to 'Cancel Request', remove_path(id: friend.friend_id), class: 'remove', method: :post %>
+			<% else %>
+				<%= link_to 'Remove Friend', remove_path(id: friend.friend_id), class: 'remove', method: :post %>
+			<% end %>
+		</div>
+
+	<% end %>
+	<% if @friends.count == 0 %>
+		<p style="clear:both">You don't have any friends right now.</p>
+	<% end %>
+	<h2>Pending Friend Requests</h2>
+	<% @pending_friends.each do |friend| %>
+		<div class="friend_div">
+			<%= image_tag "profile_default.png" %>
+			<h5><%= User.find(friend.friend_id).name %></h5>
+			<p><%= Friend.where(user_id: friend.friend_id, is_pending: false).count - Friend.where(friend_id: friend.friend_id, is_pending: true).count %> Friends</p>
+			<%= link_to 'Accept', accept_path(id: friend.friend_id), class: 'accept', method: :post %>
+			<%= link_to 'Deny', remove_path(id: friend.friend_id), class: 'remove', method: :post %>
+		</div>
+
+	<% end %>
+	<% if @pending_friends.count == 0 %>
+		You don't have any pending friend requests right now.
+	<% end %>
+
+	<div class="add_friend">
+		<%= simple_form_for friend_add_path , :html => { class: 'email' } do |f| %>
+		  <%= f.input :email, required: false, :label => "Enter Friend's Email To Add" %>
+		  <%= f.button :submit, "Add Friend" %>
+		<% end %>
+	</div>
+</div>

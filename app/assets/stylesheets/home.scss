@@ -1,3 +1,56 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.content {
+	background: url(cooking.png) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 100vh;
+}
+
+.navbar {
+	position:fixed;
+}
+
+.message {
+	color: white;
+	padding: 270px 0px 0px 75px;
+	font-size: 40pt;
+}
+
+.slogan {
+	color: white;
+	padding: 10px 0px 0px 75px;
+	font-size: 18pt;
+}
+
+.start-button {
+	color: white;
+	border: 1px solid #FFFFFF;
+	border-radius: 5px;
+	height: 60px;
+	width: 200px;
+	line-height: 60px;
+	text-align: center;
+	font-size: 12pt;
+	margin: 50px 0px 0px 75px;
+	transition: .5s;
+}
+
+.start-button:hover {
+	color: black;
+	background-color: white;
+	transition: .5s;
+	cursor: pointer;
+}
