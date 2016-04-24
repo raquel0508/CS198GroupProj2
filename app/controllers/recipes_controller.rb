@@ -12,26 +12,18 @@ class RecipesController < ApplicationController
 		@recipe = Recipe.new
 	end
 
-	def create
-		@recipe = Recipe.new(recipe_params)
-		@ingredients
-		if @recipe.save
-			@recipe.user_id = current_user.id
-			@recipe.name = :name
-			@recipe.description = :description
-			@recipe.calories = :calories
-			@recipe.number_of_likes = :number_of_likes
-			@recipe.contains_allergens = :contains_allergens
-			@recipe.level_of_difficulty = :level_of_difficulty
-			@recipe.vegan_vegetarian = :vegan_vegetarian
-			@recipe.price = :price
-			@recipe.save
-		end
-		#redirect_to #your recipes
+	def search
+		redirect_to root
 	end
 
-	def find
+	def create
+		@recipe = Recipe.new(recipe_params)
+		
+		@recipe.save
+	
+		redirect_to new_ingredient_path(id: @recipe.id)
 	end
+
 
 	def like
 		@recipe = Recipe.find(params[:id])
@@ -47,7 +39,7 @@ class RecipesController < ApplicationController
 	
 	private
 	def recipe_params
-		params.require(:recipe).permit(:name)
+		params.require(:recipe).permit(:name, :description, :calories, :contains_allergens, :level_of_difficulty, :vegan_vegetarian, :price, :steps)
 	end
 
 	def ing_params
