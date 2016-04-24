@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   resources :users
   resources :recipes
 
+  post 'recipes/create', to:"recipes#create"
+  
+
 
 end

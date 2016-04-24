@@ -68,15 +68,12 @@
 <div id="outer">
   <div id="inner">
     <% if current_user %>
-      <h1 id="title">Welcome <%= current_user.username %>!</h1>
-    <% else %>
-      <h1 id="title">Welcome to Recipe.io!</h1>
-      <h2 id="description">At Recipe.io we aim to make recipe searching easier.
-        At Recipe.io we aim to make recipe searching easier.
-        At Recipe.io we aim to make recipe searching easier.
-        At Recipe.io we aim to make recipe searching easier.
-        At Recipe.io we aim to make recipe searching easier.
-        At Recipe.io we aim to make recipe searching easier.
+      <!-- <h1 id="title">Welcome <%= current_user.username %>!</h1> -->
+      <% @recipes.each do |recipe| %>
+        <h2 id="recipe"><%= link_to recipe.name, recipe_path(id: recipe.id) %></h2>
+      <% end %>
+      <h3 id="button"><%= link_to "Create new recipe", new_recipe_path %></h3>
+      <h2 id="description"></h2>
       </h2>
     <% end %>
   </div>
