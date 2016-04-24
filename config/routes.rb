@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   resources :users
   resources :recipes
   resources :friends
+  resources :ingredients
+  resources :recipesteps
+
+  patch 'like', to:'recipes#like'
+  get '/recipes/new', to: 'recipes#new'
+  post 'recipes', to: 'recipes#create'
 
 
 end

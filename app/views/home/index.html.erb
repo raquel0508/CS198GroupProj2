@@ -1,4 +1,5 @@
 <% if current_user %>
+	<h1 id="title">Welcome <%= current_user.username %>!</h1>
 <% else %>
 	<div class="content">
 		<script>
@@ -7,10 +8,10 @@
 		</script>
 		<div class="welcome">
 			<div class="message">
-				Making Recipe Searching Easier!
+				Welcome to Recipe.io!
 			</div>
 			<div class="slogan">
-				Start creating, finding, and sharing recipes today!
+				At Recipe.io we aim to make recipe searching easier.
 			</div>
 		</div>
 		<div class="start-button" href="/users/sign_up">
