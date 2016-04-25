@@ -25,6 +25,7 @@
         <% if current_user %>
           <li><a href="/friends">My Friends</a></li>
             <li><%= link_to "My Recipes", users_path %></li>
+            <li><%= link_to "Search a Recipe! :)", controller: "recipes", action: "search" %></li>
           <li><a href="#"><%= current_user.name %></a></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
         <% else %>

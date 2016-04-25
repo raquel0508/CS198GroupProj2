@@ -10,19 +10,15 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users
-  resources :recipes
-  resources :friends
-  resources :ingredients
-  resources :recipesteps
-
   patch 'like', to:'recipes#like'
   get '/recipes/search', to: 'recipes#search', as: :search
+  get '/recipes/found', to: 'recipes#found', as: :found
   get '/recipes/new', to: 'recipes#new'
   post 'recipes', to: 'recipes#create'
-
   post 'recipes/create', to:"recipes#create"
   
-
-
+  resources :users
+  resources :recipes
+  resources :ingredients
+  resources :recipesteps
 end

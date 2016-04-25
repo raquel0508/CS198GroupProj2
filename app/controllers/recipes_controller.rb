@@ -13,7 +13,45 @@ class RecipesController < ApplicationController
 	end
 
 	def search
-		redirect_to root
+	end
+
+	def found
+		@set = Set.new
+		
+		@recipe = Recipe.new(recipe_search_params)
+		if ing_params != nil
+			@ingredient = Ingredient.new(ing_params)
+		end
+		for recipe in Recipe.all
+			if @recipe.name != nil
+				if recipe.name != nil and recipe.name == @recipe.name 
+					@set.add(recipe)
+				end
+			end
+			if @recipe.vegan_vegetarian != nil
+				if recipe.vegan_vegetarian != nil and recipe.vegan_vegetarian == @recipe.vegan_vegetarian
+					@set.add(recipe)
+				end
+			end
+			if @recipe.price != nil
+				if recipe.price != nil and recipe.price <= :price 
+					@set.add(recipe)
+				end
+			end
+		end
+		if @ingredient.name != nil
+			for ing in Ingredient.all
+				if ing.name != nil and ing.name == @ingredient.name
+					for recipe in Recipe.all
+						if recipe != nil
+							if recipe.id == ing.recipe_id
+								@set.add(recipe)
+							end
+						end
+					end
+				end
+			end
+		end 
 	end
 
 	def create
@@ -49,6 +87,25 @@ class RecipesController < ApplicationController
 
 	def ing_params
 		params.require(:ingredient).permit(:name)
+	end
+	def recipe_search_params
+		params.require(:recipe).permit(:name, :vegan_vegetarian, :price, :level_of_difficulty, :contains_allergens)
+	end 
+
+	def veg_search_params
+		params.require(:recipe).permit(:vegan_vegetarian)
+	end
+
+	def recipe_allergens_params
+		params.require(:recipe).permit(:contains_allergens)
+	end
+
+	def recipe_diff_params
+		params.require(:recipe).permit(:level_of_difficulty)
+	end
+
+	def price_params
+		params.require(:recipe).permit(:price)
 	end
 
 end
