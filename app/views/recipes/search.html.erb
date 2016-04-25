@@ -1,0 +1,15 @@
+<h1> Find a Recipe! </h1> 
+Feel free to fill in any of the blanks that cater to a recipe that you want to find.
+<% @recipe = Recipe.new %>
+<%= simple_form_for @recipe do |f| %>
+  <br>Name: <%= f.text_field :name %>
+  <br>Must the Recipe be Vegan/Vegetarian? <%= f.text_field :vegan_vegetarian %>
+  <br>Budget? <%= f.text_field :price %>
+  <br>Level of Recipe Difficulty: <%= f.text_field :level_of_difficulty %>
+  <br> Can the recipe not contain allergens? <%= f.text_field :contains_allergens %>
+<% end %>
+<% @ingredient = Ingredient.new %>
+<%= simple_form_for @ingredient do |f| %>
+ <br>Ingredient: <%= f.text_field :name %>
+ <br><br><%= link_to "Find Your Recipe", controller: "recipes", action: "found" %>
+<% end %>

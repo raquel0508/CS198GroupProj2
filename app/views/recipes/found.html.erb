@@ -1,32 +1,11 @@
-Search a Recipe! :) 
-  <% Recipe.all.each do |recipe| %>
-  <% if recipe.user_id == current_user.id %>
-  <br><br><%= recipe.name %> 
-  <br>Description: <%= recipe.description %>
-  <br>Calories: <%= recipe.calories %>
-  <br>Number of Likes: <%= recipe.number_of_likes %>
-  <br>Price: <%= recipe.price %>
-  <br>Vegan/Vegetarian: <%= recipe.vegan_vegetarian %>
-  <br>Contains Allergens: <%= recipe.contains_allergens %>
-  <br>Level of Difficulty: <%= recipe.level_of_difficulty %> 
+Your Search Results!
 
-  <br><br>Ingredients:
-  <% Ingredient.all.each do |ingredient| %> 
-  <% if ingredient.recipe_id == recipe.id %> 
-  <br><%= ingredient.quantity %>
-  <%= ingredient.name %> 
-  <% end %> 
-  <% end %> 
-
-  <br><br>Instructions:
-  <% RecipeStep.all.each do |recipestep| %>
-  <% if recipestep.recipe_id == recipe.id %>
-  <br><%= recipestep.step_number %>.
-  <%= recipestep.step_description %>
-  <% end %> 
-  <% end %>
-  <br><br>
-  <%= button_to "Like this Recipe!", like_path(id: recipe), :class => "button medium", :method => :patch %>
-
-  <% end %> 
-  <% end %> 
+<% @set.each do |recipe| %>
+  <li>Recipe name: <%= recipe.name %>
+      Vegan/Vegetarian: <%= recipe.vegan_vegetarian %>
+      Price: <%= recipe.price %>
+      Contains Allergens? <%= recipe.contains_allergens %>
+      Level of Difficulty? <%= recipe.level_of_difficulty %>
+      Number of Likes <%= recipe.number_of_likes %>
+      </li>
+<% end %>
