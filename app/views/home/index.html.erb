@@ -1,5 +1,7 @@
 <% if current_user %>
-	<h1 id="title">Welcome <%= current_user.name %>!</h1>
+	<script type="text/javascript">
+	    window.location.href="/users"  // put your correct path in a string here
+	  </script>
 <% else %>
 	<div class="content">
 		<script>

@@ -17,7 +17,11 @@ class RecipesController < ApplicationController
 	end
 
 	def create
-		puts 'here'
+		if recipe_params[:vegan_vegetarian] == 1
+			recipe_params[:vegan_vegetarian] = true
+		else
+			recipe_params[:vegan_vegetarian] = false
+		end
 		@recipe = Recipe.new(recipe_params)
 		
 		@recipe.save
@@ -40,7 +44,7 @@ class RecipesController < ApplicationController
 	
 	private
 	def recipe_params
-		params.require(:recipe).permit(:name, :description, :calories, :contains_allergens, :level_of_difficulty, :vegan_vegetarian, :price, :steps).merge(user_id: current_user.id)
+		params.require(:recipe).permit(:name, :description, :calories, :contains_allergens, :level_of_difficulty, :vegan_vegetarian, :price, :steps).merge(user_id: current_user.id, number_of_likes: 0)
 	end
 
 	def ing_params

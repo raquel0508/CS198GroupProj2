@@ -6,6 +6,7 @@
 #recipedesc {
 	color: black;
 	text-align: center;
+	font-size: 14pt;
 }
 
 #info {
@@ -23,4 +24,78 @@
 #stepsname {
 	color: black;
 	text-align: center;
+}
+
+.ingredients {
+	width: 600px;
+	margin: 0 auto;
+}
+
+.steps {
+	width: 600px;
+	margin: 0 auto;
+}
+
+.icons {
+	height: 30px;
+	text-align:center;
+}
+
+.information {
+	text-align: center;
+}
+
+.create-recipe {
+	padding: 10px 50px 50px 50px;
+	width: 1000px;
+	margin: 0px auto;
+}
+
+.check-box {
+	margin: 10px 0 0 !important;
+}
+
+.create-recipe-button {
+	color: black;
+	border: 1px solid #000000;
+	border-radius: 5px;
+	height: 60px;
+	width: 200px;
+	text-align: center;
+	font-size: 12pt;
+	margin: 50px 12.5%;
+	transition: .5s;
+	background-color: white;
+}
+
+.create-recipe-button:hover {
+	color: white;
+	background-color: black;
+	transition: .5s;
+	cursor: pointer;
+}
+
+.show-buttons {
+	color: black;
+	border: 1px solid #000000;
+	border-radius: 5px;
+	height: 60px;
+	width: 200px;
+	text-align: center;
+	font-size: 12pt;
+	margin: 20px 10px 0px 0px;
+	transition: .5s;
+	background-color: white;
+	float: left;
+}
+
+.show-buttons:hover {
+	color: white;
+	background-color: black;
+	transition: .5s;
+	cursor: pointer;
+}
+
+.center-button {
+	margin-left: 9%;
 }
