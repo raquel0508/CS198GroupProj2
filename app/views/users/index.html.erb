@@ -10,6 +10,9 @@
         <p style="text-align: right">Recipe by <%= current_user.name %></p>
     </div>
     <% end %>
+    <% if @recipes.count == 0 %>
+      You don't have any recipes. Create one!
+    <% end %>
     <h2>Friend's Recipes</h2>
     <% @friend_recipes.each do |recipe| %>
       <div class="recipe">

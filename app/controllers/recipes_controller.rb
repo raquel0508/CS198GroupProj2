@@ -32,7 +32,7 @@ class RecipesController < ApplicationController
 
 	def like
 		@recipe = Recipe.find(params[:id])
-		@id = @recipe.user_id
+		@id = @recipe.id
 		if @recipe.number_of_likes == nil
 			@recipe.number_of_likes = 1
 		else

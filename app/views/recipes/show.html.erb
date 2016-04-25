@@ -32,13 +32,14 @@
     <h1 style="padding-bottom: 10px;">Steps</h1>
     <h4><%= @recipe.steps %></h4>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-3">
     </div>
-  <div class="col-sm-4">  
+  <div class="col-sm-6">  
     <%= button_to "Back", users_path(current_user.id), :class => "show-buttons center-button", :method => :get %>
+    <%= button_to "Like!", like_path(id: @recipe.id), :class => "show-buttons", :method => :patch %>
     <%= button_to "Create a New Recipe!", recipes_new_path, :class => "show-buttons", :method => :get %>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-3">
     </div>
   </div>
 </div>
