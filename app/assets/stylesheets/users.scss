@@ -1,10 +1,32 @@
-#button {
- 	margin-left: 30%;
- 	color: white;
- 	font-size: 400%;
- }
+.recipes {
+	margin: 50px 0px 0px 50px;
+}
 
- #recipe {
- 	text-align: center;
- 	color: white;
- }
+.recipe {
+	border: 1px solid #D0D0D0;
+	width: 500px;
+	padding: 10px 10px 0px 10px;
+	margin-bottom: 10px;
+	display: inline-block;
+	border-radius: 5px;
+}
+
+.new-recipe {
+	color: black;
+	border: 1px solid #000000;
+	border-radius: 5px;
+	height: 60px;
+	width: 200px;
+	line-height: 60px;
+	text-align: center;
+	font-size: 12pt;
+	margin: 50px auto;
+	transition: .5s;
+}
+
+.new-recipe:hover {
+	color: white;
+	background-color: black;
+	transition: .5s;
+	cursor: pointer;
+}

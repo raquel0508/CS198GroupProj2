@@ -17,6 +17,7 @@ class RecipesController < ApplicationController
 	end
 
 	def create
+		puts 'here'
 		@recipe = Recipe.new(recipe_params)
 		
 		@recipe.save
@@ -39,7 +40,7 @@ class RecipesController < ApplicationController
 	
 	private
 	def recipe_params
-		params.require(:recipe).permit(:name, :description, :calories, :contains_allergens, :level_of_difficulty, :vegan_vegetarian, :price, :steps)
+		params.require(:recipe).permit(:name, :description, :calories, :contains_allergens, :level_of_difficulty, :vegan_vegetarian, :price, :steps).merge(user_id: current_user.id)
 	end
 
 	def ing_params
