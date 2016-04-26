@@ -43,3 +43,5 @@ Division of Labor:
 * Simon - handled the friends, contributors
 * Raquel - handled parts of the website that had to do with recipes 
 
+Heroku:
+* [Deployed Heroku App] (https://recipeio.herokuapp.com/)
